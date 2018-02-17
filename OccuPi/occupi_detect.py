@@ -43,9 +43,11 @@ count = 0
 m_old = np.array([25,25,25,25,25,25,25,25])
 
 while True:
+	
+    sensor_data = sensor.readPixels()
 
     occupancy_counter = 0
-    m_new = np.array(sensor.readPixels()).reshape(8,8).mean(0)
+    m_new = np.array(sensor_data).reshape(8,8).mean(0)
     diff = m_new - m_old
 
     if np.max(diff)>1:
@@ -64,14 +66,15 @@ while True:
             occupancy_counter = -1
         time.sleep(1)
     m_old = m_new
+
     timestamp = time.time()
     gpu_temp = measure_gpu_temp()
     cpu_temp = measure_cpu_temp()
     #datastore = {"gpu_temp","cpu_temp" }
-    sensor_data = sensor.readPixels()
-    sensor_data.extend([occupancy_counter])
+    #sensor_data = sensor.readPixels()
+    #sensor_data.extend([occupancy_counter])
     #print sensor_data
-    query_args = {"timestamp":timestamp,"GPU_Temp" : gpu_temp,"CPU_Temp": cpu_temp,"mac_address":mac_address,"sensor_data":sensor_data}
+    query_args = {"timestamp":timestamp,"GPU_Temp" : gpu_temp,"CPU_Temp": cpu_temp,"mac_address":mac_address,"sensor_data":sensor_data,"occupancy_counter":occupancy_counter}
     url = 'http://occupi.yottatrend.com/pi_post.php'
     data = urllib.urlencode(query_args)
     request = urllib2.Request(url, data)
