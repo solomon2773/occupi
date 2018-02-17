@@ -70,11 +70,14 @@ while True:
     #datastore = {"gpu_temp","cpu_temp" }
     sensor_data = sensor.readPixels()
     sensor_data.extend([occupancy_counter])
-    print sensor_data
+    #print sensor_data
     query_args = {"timestamp":timestamp,"GPU_Temp" : gpu_temp,"CPU_Temp": cpu_temp,"mac_address":mac_address,"sensor_data":sensor_data}
     url = 'http://occupi.yottatrend.com/pi_post.php'
     data = urllib.urlencode(query_args)
     request = urllib2.Request(url, data)
     response = urllib2.urlopen(request).read()
-    print response
+    if occupancy_counter != 0:
+	print response
+        print occupancy_counter
+
     time.sleep(.1) #delay for one second
