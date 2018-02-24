@@ -40,6 +40,7 @@ sleep(.1)
 old_loc = 0
 new_loc = 0
 count = 0
+direction = 0
 m_old = np.array([25,25,25,25,25,25,25,25])
 
 while True:
@@ -52,20 +53,25 @@ while True:
 
     if np.max(diff)>1:
         new_loc = np.argmax(diff) + 1
-        direction = old_loc - new_loc
+        if old_loc==0:
+		old_loc = new_loc
+	direction = old_loc - new_loc
         old_loc = new_loc
         count = count + direction
         #print "Direction:",direction,"Count:",count
         if count>3:
             count=0
             occupancy_counter = 1
-        time.sleep(1)
+        #time.sleep(1)
 
         if count<-3:
             count=0
             occupancy_counter = -1
-        time.sleep(1)
-    m_old = m_new
+        #time.sleep(1)
+    else: 
+	old_loc = 0
+	direction = 0
+	count = 0
 
     timestamp = time.time()
     gpu_temp = measure_gpu_temp()
