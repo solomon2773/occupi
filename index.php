@@ -26,8 +26,11 @@ try {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        $rows = $result->fetch_assoc();
-      //  print_r($row);
+        while($row = $result->fetch_assoc()) {
+            $rows[]=$row;
+        }
+      //  $rows = $result->fetch_assoc();
+       // print_r($row);
     } else {
 
     }
@@ -49,14 +52,22 @@ catch(PDOException $e)
 
 <div>
     <?php
-   // foreach ($rows as $row){
 
-    $jsondata = json_decode($rows['jsondata']);
-//print_r($jsondata);
+    function heatmapcolorcssconverter($temp){
+        $temp_buf = (int)number_format($temp,2);
+        $temp_hsl = 200-($temp_buf+20);
+        echo 'background-color: hsl('.$temp_hsl.', 50%, 50%);';
+        return;
+    }
+
+    foreach ($rows as $row){
+
+    $jsondata = json_decode($row['jsondata']);
+    //print_r($row);
     ?>
 
-    <div>Last Update : <?php echo $rows['lastupdate']?></div>
-    <div>Device Mac Address : <?php echo $rows['mac_address']?></div>
+    <div>Last Update : <?php echo $row['lastupdate']?></div>
+    <div>Device Mac Address : <?php echo $row['mac_address']?></div>
     <div>Device Timestamp : <?php echo $jsondata->timestamp?></div>
     <div>CPU Temp. : <?php echo $jsondata->CPU_Temp?></div>
     <div>GPU Temp. : <?php echo $jsondata->GPU_Temp?></div>
@@ -67,16 +78,16 @@ catch(PDOException $e)
        // print_r($sensordata_array);
 
         ?>
-        <table style="margin-top: 50px;padding: 10px;text-align: center;font-size: 30px;">
-            <tr style="padding: 15px">
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['63'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['62'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['61'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['60'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['59'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['58'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['57'],2);;?></td>
-                <td style="padding: 15px"><?php echo number_format($sensordata_array['56'],2);;?></td>
+        <table style="margin-top: 10px;padding: 10px;text-align: center;font-size: 30px;">
+            <tr style="padding: 5px">
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['63']);?>"><?php echo number_format($sensordata_array['63'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['62']);?>"><?php echo number_format($sensordata_array['62'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['61']);?>"><?php echo number_format($sensordata_array['61'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['60']);?>"><?php echo number_format($sensordata_array['60'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['59']);?>"><?php echo number_format($sensordata_array['59'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['58']);?>"><?php echo number_format($sensordata_array['58'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['57']);?>"><?php echo number_format($sensordata_array['57'],2);;?></td>
+                <td style="padding: 15px;<?php heatmapcolorcssconverter($sensordata_array['56']);?>"><?php echo number_format($sensordata_array['56'],2);;?></td>
             </tr>
             <tr style="padding: 15px">
                 <td style="padding: 15px"><?php echo number_format($sensordata_array['55'],2);;?></td>
@@ -155,7 +166,7 @@ catch(PDOException $e)
     </div>
 
     <?php
-   // }
+    }
     ?>
 
 

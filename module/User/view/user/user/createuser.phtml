@@ -1,0 +1,86 @@
+<?php
+$this->headTitle('Create New User Account');
+
+$this->mainMenu()->setActiveItemId('users');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+
+            'Create New User Account'=>$this->url('users', ['action'=>'createuser'])
+            ]);
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'name@example.com'
+    ]);
+
+$form->get('full_name')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'John Doe'
+    ]);
+
+$form->get('status')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Enter password',
+    ]);
+
+$form->get('confirm_password')->setAttributes([
+    'class'=>'form-control',
+    'placeholder'=>'Retype password',
+    ]);
+
+$form->get('roles')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+
+$form->prepare();
+?>
+
+<h2>Create New User Account</h2>
+
+<p>
+    Please fill out the following form and click the <i>Create</i> button.
+</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('full_name')); ?>
+            <?= $this->formElement($form->get('full_name')); ?>
+            <?= $this->formElementErrors($form->get('full_name')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('password')); ?>
+            <?= $this->formElement($form->get('password')); ?>
+            <?= $this->formElementErrors($form->get('password')); ?>                  
+        </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('confirm_password')); ?>
+            <?= $this->formElement($form->get('confirm_password')); ?>
+            <?= $this->formElementErrors($form->get('confirm_password')); ?>                  
+        </div>
+        
+
+        
+        <?= $this->formElement($form->get('submit')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   
+

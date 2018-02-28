@@ -1,0 +1,25 @@
+<?php
+
+$this->headTitle('Occupi');
+
+$this->mainMenu()->setActiveItemId('occupi');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+    'Occupi'=>$this->url('occupi'),
+            ]);
+
+?>
+
+<h1>Welcome to OccuPi Project</h1>
+
+<h1>Real-Time Data</h1>
+<iframe src="https://occupi.yottatrend.com/realtime_occupi.php" style="width: 100%;height: 500px;">
+
+</iframe>
+
+
+
+
+
+

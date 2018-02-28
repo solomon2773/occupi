@@ -43,7 +43,7 @@ while True:
     #datastore = {"gpu_temp","cpu_temp" }
     sensor_data = sensor.readPixels()
     query_args = {"timestamp":timestamp,"GPU_Temp" : gpu_temp,"CPU_Temp": cpu_temp,"mac_address":mac_address,"sensor_data":sensor_data}
-    url = 'http://occupi.yottatrend.com/pi_post.php'
+    url = 'http://45.35.53.205/pi_post.php'
     data = urllib.urlencode(query_args)
     request = urllib2.Request(url, data)
     response = urllib2.urlopen(request).read()
