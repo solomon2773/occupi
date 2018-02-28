@@ -1,0 +1,97 @@
+<?php
+ // module/Album/view/album/album/index.phtml:
+
+ $title = 'User Login';
+ $this->headTitle($title);
+
+ ?>
+<script>
+jQuery(document).ready(function($){
+
+
+    $('#mvl_user_login_submit').on('click' , function() {
+    //var urlregex = new RegExp("^(http:\/\/www.|https:\/\/www.|ftp:\/\/www.|www.){1}([0-9A-Za-z]+\.)");
+
+        if ($("#mvl_login_username").val() == '') {
+        $("#mvl_login_username").focus();
+        return false;
+        }  else if ($("#mvl_login_pass").val() == ''){
+        $("#mvl_login_pass").focus();
+        return false;
+        } else if ($("#recaptcha_response_field").val() == ''){
+        $("#recaptcha_response_field").focus();
+        return false;
+        } else if ($("#mvl_new_user_login_validate").val() == '1'){
+            alert('Please check all fields with red alert infos!!!');
+            return false;
+        }
+        $('#userloginModal').modal('show');
+        $("#mvl_main_useraccount_login_processing_iconbox").html('<div style="padding: 15px;"><img style="margin-left: auto;margin-right: auto;display: block;    max-width: 200px;" src="<?php echo SITE_URL_SSL;?>img/spinner.gif"></div>');
+
+        $.ajax({
+        type: "POST",
+        url : "<?php echo SITE_URL_SSL;?>user/userpwlogin",
+        data : $("#mvl_main_new_user_login_form_data").serialize(),
+        success: function(response){
+           $('#modal-body-result').html(response);
+        }
+        });
+
+
+    });
+});
+</script>
+
+<div id="mvl_main_content">
+
+    <h2><?php echo $this->escapeHtml($title); ?></h2>
+    <div id="mvl_main_useraccount_userlogin_form_box">
+        <div style="width: 720px;display: block;margin-left: auto;margin-right: auto;">
+            <!--
+            <div id="mvl_main_useraccount_userlogin_facebooklogin_box">
+                <div class="reg_title">Using Facebook</div>
+                <fb:login-button size="xlarge" scope="public_profile,email,user_friends" onlogin="mvl_fb_login_API();">
+                </fb:login-button>
+            <div style="margin:0 20px 0 20px;vertical-align: middle;display: inline-block;" class="reg_title">OR</div>-->
+            <div id="mvl_main_useraccount_userlogin_box">
+                <form id="mvl_main_new_user_login_form_data" method="post">
+                    <table border="0">
+                        <tbody>
+
+                        <tr>
+                            <td class="login_login_column_names mvl_user_login_table_cell">Username : </td>
+                            <td class="mvl_user_login_table_cell"><input type="text" id="mvl_login_username" name="mvl_login_username" class="mvl_login_form_enter" value="">
+                                <div id="mvl_login_username_alert"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td class="login_login_column_names mvl_user_login_table_cell">Password : </td>
+                            <td class="mvl_user_login_table_cell"><input type="password" id="mvl_login_pass" name="mvl_login_pass" class="pass_check" value=""><div id="mvl_login_pass_alert"></div></td>
+                        </tr>
+
+
+                        </tbody></table>
+                    <input type="hidden" id="mvl_new_user_login_validate" name="mvl_new_user_login_validate" value="0">
+                    <button id="mvl_user_login_submit" type="button" class="btn btn-primary">Login</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="userloginModal" tabindex="-1" role="dialog" aria-labelledby="userloginModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="userloginModalLabel">User Login</h4>
+            </div>
+            <div id="modal-body-result" class="modal-body">
+                <div id="mvl_main_useraccount_login_processing_iconbox"> </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

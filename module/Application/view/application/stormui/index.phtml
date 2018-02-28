@@ -1,0 +1,68 @@
+<style>
+
+    </style>
+<div class="jumbotron">
+    <h2><span class="zf-green">Storm UI</span></h2>
+
+    <div class="table-responsive">
+        <h3><span class="zf-green">Storm Cluster Summary</span></h3>
+        <?php
+        $storm_cluster_summary_decode = json_decode($storm_cluster_summary);
+        echo '<table class="table table-hover table-striped">';
+        foreach($storm_cluster_summary_decode as $storm_cluster_summary_decode_key=>$storm_cluster_summary_decode_value){
+            echo '<tr >';
+            echo '<td >'.$storm_cluster_summary_decode_key .'</td><td >'.$storm_cluster_summary_decode_value.'</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        ?>
+    </div>
+
+    <div class="table-responsive">
+        <h3><span class="zf-green">Storm Supervisor Summary</span></h3>
+        <?php
+        $storm_supervisor_summary_decode = json_decode($storm_supervisor_summary);
+        print_r($storm_supervisor_summary_decode);
+        echo '<table class="table table-hover table-striped">';
+        foreach($storm_supervisor_summary_decode as $storm_supervisor_summary_decode_key=>$storm_supervisor_summary_decode_value){
+            echo '<tr >';
+            echo '<td >'.$storm_supervisor_summary_decode_key .'</td><td >'.$storm_supervisor_summary_decode_value.'</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        ?>
+    </div>
+
+    <div class="table-responsive">
+        <h3><span class="zf-green">Storm Topology Summary</span></h3>
+        <?php
+        $storm_topology_summary_decode = json_decode($storm_topology_summary);
+        echo '<table class="table table-hover table-striped">';
+        foreach($storm_topology_summary_decode as $storm_topology_summary_decode_key=>$storm_topology_summary_decode_value){
+            echo '<tr >';
+            echo '<td >'.$storm_topology_summary_decode_key .'</td><td >'.$storm_topology_summary_decode_value.'</td>';
+            echo '</tr>';
+        }
+        echo '</table>';
+        ?>
+    </div>
+
+    <div class="table-responsive">
+        <h3><span class="zf-green">Storm Cluster Configuration</span></h3>
+    <?php
+    $storm_cluster_configuration_decode = json_decode($storm_cluster_configuration);
+    echo '<table class="table table-hover table-striped">';
+    foreach($storm_cluster_configuration_decode as $storm_cluster_configuration_decode_key=>$storm_cluster_configuration_decode_value){
+        echo '<tr >';
+        echo '<td >'.$storm_cluster_configuration_decode_key .'</td><td >'.$storm_cluster_configuration_decode_value.'</td>';
+        echo '</tr>';
+    }
+    echo '</table>';
+
+    ?>
+    </div>
+
+
+</div>
+
+

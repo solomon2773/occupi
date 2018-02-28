@@ -1,0 +1,25 @@
+<?php
+$this->headTitle('Welcome');
+
+$this->mainMenu()->setActiveItemId('home');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home')
+            ]);
+?>
+
+<h1>Welcome OccuPi Project</h1>
+<div><img src="/img/occupi-1.jpg" style="max-width: 100%;"></div>
+<div><img src="/img/occupi-2.jpg" style="max-width: 100%;"></div>
+<div></div>
+<div>GitHub source code => <a href="https://github.com/solomon2773/occupi" target="_blank">Here</a></div>
+<div>
+    <div>1. Introduction</div>
+    <div>1.1. Purpose</div>
+    <div>Smart management of building resources such as lighting, heating, cooling and other event-driven applications require knowledge of room occupancy for them to be truly classified as intelligent systems. Recent developments and price reduction of sensing technologies have opened the possibility for better and cheaper solutions for room occupancy detection. It is important to note that although the problem space typically includes areas such as hallways, corridors, large conference rooms and open areas, we have decided to narrow the scope of this project to occupancy detection for a single classroom with average size of 30ft x 30ft. This tailored approach will allow us to build the best system for the given room size but also make it possible for the solution to be easily extended to other rooms of similar size, which encompasses majority of the room type at UTD.   From this point you can extrapolate to more rooms to encompass the majority of a building.</div>
+    <div>1.2. Scope</div>
+    <div>Installing occupancy sensors in the entryway of the classroom and within the classroom.  Selection of the type occupancy sensor shall be based on using ceiling / wall / door sensors that work best in the room.  Rooms which do not receive occupancy sensors are restrooms, corridors. Sensors must work if one person is in the class alone. Data will be collected to formulate a history of usage that can be used for future expectations.</div>
+    <div>1.3. Overview</div>
+    <div>A room occupancy monitoring system monitors the occupancy status of a room and collects and displays the room occupancy information in real time.  The room occupancy monitoring system includes a set of sensor devices and a server. The room occupancy sensor device identifies the number of people entering or leaving a room.  This will adjust the count of people that are in the room and will determine if the room is currently occupied.  Sensors located at the doorway will detect motion and generate a signal to the system that the server receives and activates the IR sensor to detect the number of people walking through the doorway.  The system will also have the capability to display the room occupancy when a signal is received from the administrator system.</div>
+
+</div>

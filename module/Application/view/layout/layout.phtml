@@ -1,0 +1,128 @@
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle('OccuPi')->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
+                        ->prependStylesheet($this->basePath('css/style.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+                        ->prependStylesheet($this->basePath('css/bootstrap.min.css'))
+            ->prependStylesheet($this->basePath('libs/bootstrap/bootstrap-social-gh-pages/bootstrap-social.css'))
+            ->prependStylesheet($this->basePath('libs/fontawesome/css/font-awesome.css'))
+        ?>
+
+        <!-- Scripts -->
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-2.2.4.min.js'))
+        ?>
+        <!-- Piwik -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+            _paq.push(["setCookieDomain", "*.yottatrend.com"]);
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function() {
+                var u="//oot.im/";
+                _paq.push(['setTrackerUrl', u+'piwik.php']);
+                _paq.push(['setSiteId', '14']);
+                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+            })();
+        </script>
+        <!-- End Piwik Code -->
+        <!-- Facebook SDK-->
+        <script>
+
+
+            // Load the SDK asynchronously
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+
+
+        </script>
+        <!-- EndFacebook SDK-->
+        <!-- Google The top of file index.html -->
+        <html itemscope itemtype="http://schema.org/Article">
+        <head>
+            <!-- BEGIN Pre-requisites -->
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js">
+            </script>
+            <script src="https://apis.google.com/js/client:platform.js?onload=start" async defer>
+            </script>
+            <!-- Google  END Pre-requisites -->
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <!-- Page header -->
+                <div class="col-md-4">
+                   <img src="<?php echo SITE_URL_SSL;?>img/occupi_logo.png">
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navigation bar -->
+                    <?php
+                    // Check if the activeMenuItemId passed to layout view model
+                    // and if so, use it for setting active navbar item.
+                    if (isset($activeMenuItemId)) {
+                        $this->mainMenu()->setActiveItemId($activeMenuItemId);
+                    }
+
+                    // Render the navbar
+                    echo $this->mainMenu()->render();
+                    ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Breadcrumbs -->
+                    <?= $this->pageBreadcrumbs()->render(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Page content placeholder -->
+                    <?= $this->content; ?>
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <div>
+<!--
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- fashiontrendguru_footer -->
+             <!--    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-4356939752471615"
+                         data-ad-slot="4287106489"
+                         data-ad-format="auto"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>-->
+                </div>
+                <p>&copy; 2018 by OccuPi All rights reserved.</p>
+                <p>This page is host by <a href="https://www.yottacommerce.com/">Yotta Commerce</a>.</p>
+            </footer>
+        </div>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>
