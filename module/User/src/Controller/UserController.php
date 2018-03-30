@@ -449,6 +449,12 @@ class UserController extends AbstractActionController
             'form' => $form
         ]);
     }
+    public function checkinAction(){
+        $user_email = htmlentities($_POST['email']);
+        echo $user_email;
+
+        die();
+    }
 }
 
 

@@ -154,8 +154,7 @@ class AuthController extends AbstractActionController
     }
     public function appLoginAction()
     {
-        echo 'appLoginAction';
-        exit;
+
         // Retrieve the redirect URL (if passed). We will redirect the user to this
         // URL after successfull login.
         $redirectUrl = (string)$this->params()->fromQuery('redirectUrl', '');
@@ -163,10 +162,11 @@ class AuthController extends AbstractActionController
             throw new \Exception("Too long redirectUrl argument passed");
         }
 
-        // Check if we do not have users in database at all. If so, create
-        // the 'Admin' user.
-        $this->userManager->createAdminUserIfNotExists();
-
+        $appLogin_result = array();
+        $appLogin_post = $_POST;
+        if (empty($appLogin_post)){
+            exit;
+        }
         // Create login form
         $form = new LoginForm();
         $form->get('redirect_url')->setValue($redirectUrl);
@@ -175,27 +175,39 @@ class AuthController extends AbstractActionController
         $isLoginError = false;
 
         // Check if user has submitted the form
-        if ($this->getRequest()->isPost()) {
+       // if ($this->getRequest()->isPost()) {
 
             // Fill in the form with POST data
-            $data = $this->params()->fromPost();
+          //  $data = $this->params()->fromPost();
 
-            $form->setData($data);
+           // $form->setData($data);
 
             // Validate form
-            if($form->isValid()) {
+          //  if($form->isValid()) {
 
                 // Get filtered and validated data
-                $data = $form->getData();
+              //  $data = $form->getData();
 
                 // Perform login attempt.
-                $result = $this->authManager->login($data['email'],
-                    $data['password'], $data['remember_me']);
+                $result = $this->authManager->login($appLogin_post['email'],
+                    $appLogin_post['password'], 1);
 
                 // Check result.
-                if ($result->getCode() == Result::SUCCESS) {
 
+                if ($result->getCode() == Result::SUCCESS) {
+                    $appLogin_result['login_result'] = 'LOGIN SUCCESS';
+                    $appLogin_result['error'] = '0';
+
+
+
+
+                        $appLogin_result['uid'] = '1';
+                    //    $appLogin_result['user'] = '1';
+                        $appLogin_result['name'] = 'occupi';
+                        $appLogin_result['email'] = $appLogin_post['email'];
+                        $appLogin_result['created_at'] = time(0);
                     // Get redirect URL.
+                    /*
                     $redirectUrl = $this->params()->fromPost('redirect_url', '');
 
                     if (!empty($redirectUrl)) {
@@ -212,20 +224,18 @@ class AuthController extends AbstractActionController
                         return $this->redirect()->toRoute('home');
                     } else {
                         $this->redirect()->toUrl($redirectUrl);
-                    }
+                    }*/
                 } else {
-                    $isLoginError = true;
+                    $appLogin_result['login_result'] = 'LOGIN ERROR';
+                    $appLogin_result['error'] = '1';
                 }
-            } else {
-                $isLoginError = true;
-            }
-        }
+        //    } else {
+         //       $isLoginError = true;
+         //   }
+       // }
 
-        return new ViewModel([
-            'form' => $form,
-            'isLoginError' => $isLoginError,
-            'redirectUrl' => $redirectUrl
-        ]);
+        echo json_encode($appLogin_result);
+        die();
     }
     //https://www.facebook.com/v2.10/dialog/oauth?scope=public_profile,user_friends,email&client_id=121251241872143&redirect_uri=https://www.yottatrend.com/login/facebookloginCallback
     public function facebookloginCallbackAction(){
