@@ -285,8 +285,8 @@ class AuthController extends AbstractActionController
             $appLogin_result['user'] = $checkin_user;
             $appLogin_result['login_result'] = 'LOGIN SUCCESS';
             $appLogin_result['error'] = '0';
-            $appLogin_result['uid'] = $checkin_user['id'];
-            $appLogin_result['name'] = $checkin_user['fullname'];
+            $appLogin_result['uid'] = $checkin_user['user_id'];
+            $appLogin_result['name'] = $checkin_user['user_fullname'];
             $appLogin_result['email'] = $userpost_email;
             $appLogin_result['created_at'] = time(0);
             // Get redirect URL.
