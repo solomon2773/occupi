@@ -138,7 +138,7 @@ return [
             Controller\UserController::class => [
                 // Give access to "resetPassword", "message" and "setPassword" actions
                 // to anyone.
-                ['actions' => ['resetPassword', 'message','createuser'], 'allow' => '*'],
+                ['actions' => ['resetPassword', 'message','createuser','checkin','iosappLogin'], 'allow' => '*'],
                 ['actions' => [ 'setPassword','settings'], 'allow' => '+profile.own.view'],
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to users having the "user.manage" permission.
                 ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '+user.manage']

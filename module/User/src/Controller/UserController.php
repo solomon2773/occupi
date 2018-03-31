@@ -450,8 +450,13 @@ class UserController extends AbstractActionController
         ]);
     }
     public function checkinAction(){
-        $user_email = htmlentities($_POST['email']);
-        echo $user_email;
+        if (!empty($_POST['email'])){
+            $user_email = htmlentities($_POST['email']);
+            $user = $this->entityManager->getRepository(User::class)->findOneByEmail( ['email'=>$user_email]);
+            $checkin_user = $user->getUserData();
+            echo json_encode($checkin_user);
+
+        }
 
         die();
     }
