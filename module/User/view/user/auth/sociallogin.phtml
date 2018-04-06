@@ -24,7 +24,7 @@ $form->get('password')->setAttributes([
 ?>
 <?php
 $client = new Google_Client();
-$client->setAuthConfig(ROOT_PATH . '/config/client_secrets/client_secret_1023095614270-q0bntmf1f5jkvhkd6q2uppcsk9kda8cp.apps.googleusercontent.com.json');
+$client->setAuthConfig(ROOT_PATH . '/config/client_secrets/client_secret_102leusercontent.com.json');
 $client->setAccessType("offline");        // offline access
 $client->setIncludeGrantedScopes(true);   // incremental auth
 //$client->addScope('https://www.googleapis.com/auth/plus.login');
@@ -70,7 +70,7 @@ $google_auth_url = $client->createAuthUrl();
     function google_start() {
         gapi.load('auth2', function() {
             auth2 = gapi.auth2.init({
-                client_id: '1023095614270-q0bntmf1f5jkvhkd6q2uppcsk9kda8cp.apps.googleusercontent.com',
+                client_id: '1023095ogleusercontent.com',
                 // Scopes to request in addition to 'profile' and 'email'
                 //scope: 'additional_scope'
             });
