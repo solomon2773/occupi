@@ -86,7 +86,7 @@ class NavManager
             $items[] = [
                 'id' => 'login',
                 'label' => 'Sign in',
-                'link'  => $url('login',['action'=>'sociallogin']),
+                'link'  => $url('login'),
                 'float' => 'right'
             ];
         } else {
