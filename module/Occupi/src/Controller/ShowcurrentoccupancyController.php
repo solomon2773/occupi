@@ -193,7 +193,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
     public function getRealTimeDataDoorCountAction(){
 
 
-        $sql = "SELECT * FROM sensors ORDER BY `sensors`.`id` ASC LIMIT 1";
+        $sql = "SELECT * FROM sensors ORDER BY `sensors`.`id` DESC LIMIT 1";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
