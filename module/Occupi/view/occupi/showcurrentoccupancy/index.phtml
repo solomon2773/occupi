@@ -12,18 +12,22 @@ $this->pageBreadcrumbs()->setItems([
 
 ?>
 
-<h1>Show Currency Occupancy</h1>
+<h1 id="occupi_header_name">Show Currency Occupancy</h1>
 
 <script>
 
    // jQuery(document).ready(function($){
+
+   $('#occupi_header_name').on('click' , function() {
+       alert('asdfasdf');
+   });
         var i = setInterval(function(){
             $.ajax({
                 type: "GET",
                 url : "<?php echo SITE_URL_SSL;?>occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
-                    $('#modal-occupi_test-result').html(response);
+                    $('#occupi_test').html(response);
                 }
             });
         },1000);
