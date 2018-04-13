@@ -52,7 +52,7 @@ class ShowoccupancygraphController extends AbstractActionController
     }
 
     public function getOccupancyDataAction(){
-        $sql_ctn = "SELECT `occupancy_counter`,`timestamp` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '2018-02-24 10:00:02'";
+        $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '2018-02-24 10:00:02' GROUP BY  DATE(timestamp)";
         $result_cnt = $this->conn->query($sql_ctn);
         if ($result_cnt->num_rows > 0) {
             while($row_cnt = $result_cnt->fetch_assoc()) {
@@ -63,13 +63,13 @@ class ShowoccupancygraphController extends AbstractActionController
         } else {
 
         }
-        $result_x_cnt = 0;
+       // $result_x_cnt = 0;
         foreach ($rows_cnt as $row){
-            $result_x[] = $result_x_cnt;
+           // $result_x[] = $result_x_cnt;
             $result_y[] = $row['occupancy_counter'];
-            $result_x_cnt++;
+           // $result_x_cnt++;
         }
-        $result[] = $result_x;
+        //$result[] = $result_x;
         $result[] = $result_y;
         // print_r($rows);
         echo json_encode($result);
