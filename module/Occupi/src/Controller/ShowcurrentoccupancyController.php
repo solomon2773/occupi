@@ -357,7 +357,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
         } else {
 
         }
-        echo '<div style="width: 100%;height: 500px;">';
+        echo '<div style="width: 100%;height: 350px;">';
         foreach($rows as $row){
             echo "<div>".$row['full_name']."-".$row['user_checkin_time']."</div>";
         }
