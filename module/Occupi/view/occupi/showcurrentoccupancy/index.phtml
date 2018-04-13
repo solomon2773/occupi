@@ -34,7 +34,7 @@ $this->pageBreadcrumbs()->setItems([
 
                 }
             });
-        },480);
+        },520);
 
    var ii = setInterval(function(){
        $.ajax({
@@ -51,7 +51,7 @@ $this->pageBreadcrumbs()->setItems([
 
            }
        });
-   },510);
+   },480);
 
    var iii = setInterval(function(){
        $.ajax({
@@ -59,7 +59,7 @@ $this->pageBreadcrumbs()->setItems([
            url : "http://occupi.yottatrend.com/occupi/showcurrentoccupancy/getRealTimeDataDoorCount",
            //data : $("#mvl_main_new_user_login_form_data").serialize(),
            success: function(response){
-               $('#occupi_data_block_door').html(response);
+               $('#occupi_data_block_door_cnt').html(response);
                // for (var i = 0; i < response.length; i++) {
                // response[i] can be used to get each value
                //  var sensor_data = JSON.parse(response[i]['sensor_data']);
@@ -68,7 +68,7 @@ $this->pageBreadcrumbs()->setItems([
 
            }
        });
-   },510);
+   },500);
 
     //});
 </script>
