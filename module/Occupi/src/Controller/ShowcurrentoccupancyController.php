@@ -321,7 +321,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
 
         $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '2018-02-24 10:00:02'";
-        $result_cnt = $conn->query($sql_ctn);
+        $result_cnt = $this->conn->query($sql_ctn);
         if ($result_cnt->num_rows > 0) {
             while($row_cnt = $result_cnt->fetch_assoc()) {
                 $rows_cnt[]=$row_cnt;
