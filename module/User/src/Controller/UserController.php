@@ -467,6 +467,20 @@ class UserController extends AbstractActionController
 
         die();
     }
+    public function mobileaddAction()
+    {
+
+
+                // Add user.
+
+                $user = $this->userManager->addUser($_POST);
+            if ($user){
+                echo 'Add user complete!';
+            }
+
+        die();
+    }
+
 }
 
 
