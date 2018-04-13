@@ -25,7 +25,7 @@ $this->pageBreadcrumbs()->setItems([
                 url : "http://occupi.yottatrend.com/occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
-                    $('#occupi_data_block').html(response);
+                    $('#occupi_data_block_heat_map').html(response);
                    // for (var i = 0; i < response.length; i++) {
                         // response[i] can be used to get each value
                       //  var sensor_data = JSON.parse(response[i]['sensor_data']);
@@ -34,7 +34,24 @@ $this->pageBreadcrumbs()->setItems([
 
                 }
             });
-        },350);
+        },450);
+
+   var ii = setInterval(function(){
+       $.ajax({
+           type: "GET",
+           url : "http://occupi.yottatrend.com/occupi/showcurrentoccupancy/getRealTimeDataDoorCount",
+           //data : $("#mvl_main_new_user_login_form_data").serialize(),
+           success: function(response){
+               $('#occupi_data_block_door').html(response);
+               // for (var i = 0; i < response.length; i++) {
+               // response[i] can be used to get each value
+               //  var sensor_data = JSON.parse(response[i]['sensor_data']);
+
+               // }
+
+           }
+       });
+   },450);
 
 
 
@@ -42,7 +59,15 @@ $this->pageBreadcrumbs()->setItems([
 </script>
 
 
-<div id="occupi_data_block"></div>
-
+<div>
+    <div>
+    <div><h3 >Real-Time Heat Map</h3></div>
+    <div id="occupi_data_block_heat_map"></div>
+    </div>
+    <div>
+        <div><h3 >Door Sensor</h3></div>
+        <div id="occupi_data_block_door"></div>
+    </div>
+</div>
 
 
