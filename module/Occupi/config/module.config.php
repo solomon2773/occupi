@@ -102,7 +102,7 @@ return [
             ],
             Controller\ShowcurrentoccupancyController::class => [
                 // Allow authorized users to visit "settings" action
-                ['actions' => ['index','getrRealTime'], 'allow' => '@']
+                ['actions' => ['index','getRealTimeData'], 'allow' => '@']
             ],
             Controller\ShowoccupancygraphController::class => [
                 // Allow authorized users to visit "settings" action

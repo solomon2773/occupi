@@ -32,7 +32,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
         return new ViewModel();
     }
 
-    public function getrRealTimeData(){
+    public function getRealTimeDataAction(){
 
 
     $servername = "localhost";
