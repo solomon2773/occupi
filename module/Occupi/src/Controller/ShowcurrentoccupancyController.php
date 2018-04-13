@@ -342,6 +342,28 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
         die();
     }
+
+    public function getCheckInListAction(){
+
+        $sql = "SELECT `id`,`email`,`user_checkin_time`,`full_name` FROM `core_user` LIMIT 1";
+        $result = $this->conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($sql_row = $result->fetch_assoc()) {
+                $rows[]=$sql_row;
+            }
+            //  $rows = $result->fetch_assoc();
+            // print_r($row);
+        } else {
+
+        }
+        echo '<div style="width: 100%;height: 500px;">';
+        foreach($rows as $row){
+            echo '<div>'.$row['full_name'].'-'.$row['user_checkin_time'].'</div>';
+        }
+        echo '</div>';
+    }
+
     private function heatmapcolorcssconverter($temp){
         $temp_buf = (int)number_format($temp,2);
         $temp_hsl = 200-(($temp_buf*5)+5);
