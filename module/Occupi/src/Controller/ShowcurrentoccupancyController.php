@@ -344,8 +344,8 @@ class ShowcurrentoccupancyController extends AbstractActionController
     }
 
     public function getCheckInListAction(){
-
-        $sql = "SELECT `id`,`email`,`user_checkin_time`,`full_name` FROM `core_user` LIMIT 1";
+        $rows = array();
+        $sql = "SELECT `id`,`email`,`user_checkin_time`,`full_name` FROM `core_user` ";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -359,9 +359,10 @@ class ShowcurrentoccupancyController extends AbstractActionController
         }
         echo '<div style="width: 100%;height: 500px;">';
         foreach($rows as $row){
-            echo '<div>'.$row['full_name'].'-'.$row['user_checkin_time'].'</div>';
+            echo "<div>".$row['full_name']."-".$row['user_checkin_time']."</div>";
         }
         echo '</div>';
+        die();
     }
 
     private function heatmapcolorcssconverter($temp){
