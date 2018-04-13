@@ -82,11 +82,13 @@ class ShowoccupancygraphController extends AbstractActionController
        // $result_x_cnt = 0;
         foreach ($rows_cnt as $row){
            // $result_x[] = $result_x_cnt;
-            $result_y[] = array($row['timestamp'],$row['occupancy_cnt']);
-           // $result_x_cnt++;
+          //  $result_y[] = array($row['timestamp'],$row['occupancy_cnt']);
+            $result_y[] = $row['occupancy_cnt'];
+
+            // $result_x_cnt++;
         }
         //$result[] = $result_x;
-        $result = $result_y;
+        $result[] = $result_y;
         // print_r($rows);
         echo json_encode($result);
 
