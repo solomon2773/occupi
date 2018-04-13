@@ -56,17 +56,17 @@ class ShowoccupancygraphController extends AbstractActionController
 
         if ($sel_range == 'by_min'){
             $yday = date('Y-m-d h:i:s', strtotime("-3 hours"));
-            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  MINUTE(timestamp)";
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt`,`timestamp` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  MINUTE(timestamp)";
 
         } else if ($sel_range == 'by_hour'){
             $yday = date('Y-m-d h:i:s', strtotime("-24 hours"));
-            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  HOUR(timestamp)";
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt`,`timestamp` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  HOUR(timestamp)";
 
         } else if ($sel_range == 'by_date'){
             $yday = date('Y-m-d h:i:s', strtotime("-1 day"));
 
 
-            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  DATE(timestamp)";
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt`,`timestamp` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  DATE(timestamp)";
 
         }
         $result_cnt = $this->conn->query($sql_ctn);
@@ -82,7 +82,7 @@ class ShowoccupancygraphController extends AbstractActionController
        // $result_x_cnt = 0;
         foreach ($rows_cnt as $row){
            // $result_x[] = $result_x_cnt;
-            $result_y[] = $row['occupancy_cnt'];
+            $result_y[] = array($row['timestamp'],$row['occupancy_cnt']);
            // $result_x_cnt++;
         }
         //$result[] = $result_x;
