@@ -52,6 +52,7 @@ class ShowoccupancygraphController extends AbstractActionController
     }
 
     public function getOccupancyDataAction(){
+
         $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '2018-02-24 10:00:02' GROUP BY  HOUR(timestamp)";
         $result_cnt = $this->conn->query($sql_ctn);
         if ($result_cnt->num_rows > 0) {
