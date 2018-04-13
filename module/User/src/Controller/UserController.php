@@ -455,11 +455,12 @@ class UserController extends AbstractActionController
             $user = $this->entityManager->getRepository(User::class)->findOneByEmail( ['email'=>$user_email]);
 
             $checkin_user = $user->getUserData();
-            if (!empty($checkin_user)){
+           // if (!empty($checkin_user)){
                 $mysqltime = date ("Y-m-d H:i:s", time());
                 $user->setuser_checkin_time($mysqltime);
+                $this->entityManager->flush();
                 echo json_encode($checkin_user);
-            }
+           // }
 
 
         }
