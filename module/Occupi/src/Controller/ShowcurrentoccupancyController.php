@@ -67,12 +67,12 @@ class ShowcurrentoccupancyController extends AbstractActionController
     public function getRealTimeDataAction(){
 
 
-        $sql = "SELECT * FROM sensors ";
+        $sql = "SELECT * FROM sensors ORDER BY `id` LIMIT 1";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                $rows[]=$row;
+            while($sql_row = $result->fetch_assoc()) {
+                $rows[]=$sql_row;
             }
             //  $rows = $result->fetch_assoc();
             // print_r($row);
@@ -83,8 +83,8 @@ class ShowcurrentoccupancyController extends AbstractActionController
        // print_r($rows);
 
     
-
-    foreach ($rows as $row){
+        ///heat map occupi
+     $row = $rows['0'];
 
         $jsondata = json_decode($row['jsondata']);
         //print_r($row);
@@ -95,8 +95,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
             <div>Device Timestamp : '. $jsondata->timestamp.'</div>
             <div>CPU Temp. : '. $jsondata->CPU_Temp.'</div>
             <div>GPU Temp. : '. $jsondata->GPU_Temp.'</div>
-            <div>Occupancy Counter : </div>
-           
+                     
             <div>
                 
                 <table style="margin-top: 5px;padding: 5px;text-align: center;font-size: 16px;margin-left: auto;margin-right: auto;">
