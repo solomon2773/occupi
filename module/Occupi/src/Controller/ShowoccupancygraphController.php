@@ -52,8 +52,23 @@ class ShowoccupancygraphController extends AbstractActionController
     }
 
     public function getOccupancyDataAction(){
+        $sel_range = $_POST['sel_range'];
 
-        $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '2018-02-24 10:00:02' GROUP BY  HOUR(timestamp)";
+        if ($sel_range == 'by_min'){
+            $yday = date('Y-m-d h:i:s', strtotime("-3 hours"));
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  MINUTE(timestamp)";
+
+        } else if ($sel_range == 'by_hour'){
+            $yday = date('Y-m-d h:i:s', strtotime("-24 hours"));
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  HOUR(timestamp)";
+
+        } else if ($sel_range == 'by_date'){
+            $yday = date('Y-m-d h:i:s', strtotime("-1 day"));
+
+
+            $sql_ctn = "SELECT SUM(`occupancy_counter`) AS `occupancy_cnt` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '".$yday."' GROUP BY  DATE(timestamp)";
+
+        }
         $result_cnt = $this->conn->query($sql_ctn);
         if ($result_cnt->num_rows > 0) {
             while($row_cnt = $result_cnt->fetch_assoc()) {

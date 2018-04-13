@@ -21,11 +21,7 @@ $this->pageBreadcrumbs()->setItems([
     $(document).ready(function(){
 
 
-        //$('#occupi_data_block_checkin_list').html(response);
-
-        // Our ajax data renderer which here retrieves a text file.
-        // it could contact any source and pull data, however.
-        // The options argument isn't used in this renderer.
+        var i = setInterval(function(){
         var ajaxDataRenderer = function(url, plot, options) {
             var ret = null;
             $.ajax({
@@ -42,7 +38,8 @@ $this->pageBreadcrumbs()->setItems([
         };
        // alert(response);
         // The url for our json data
-        var jsonurl = 'http://occupi.yottatrend.com/occupi/showoccupancygraph/getOccupancyData';
+            var sel_range_buf = $('#sel_range').val();
+        var jsonurl = 'http://occupi.yottatrend.com/occupi/showoccupancygraph/getOccupancyData?sel_range='.sel_range_buf;
 
         // passing in the url string as the jqPlot data argument is a handy
         // shortcut for our renderer.  You could also have used the
@@ -55,12 +52,20 @@ $this->pageBreadcrumbs()->setItems([
             }
         });
 
-
+        },1500);
 
     });
 
 </script>
 <div>Current System Time : <?php echo date ("Y-m-d H:i:s", time());?></div>
+
+<select id="sel_range">
+    <option value="0">Please Select</option>
+    <option value="by_date">By Date - last 30 days</option>
+    <option value="by_hour">By Hour - last 24 hours </option>
+    <option value="by_min">By Minute - last 360 minutes</option>
+</select>
+
 <div id="chart1" style="height: 450px;"></div>
 
 
