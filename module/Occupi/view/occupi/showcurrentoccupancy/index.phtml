@@ -15,20 +15,21 @@ $this->pageBreadcrumbs()->setItems([
 <h1>Show Currency Occupancy</h1>
 
 <script>
-    jQuery(document).ready(function($){
+
+   // jQuery(document).ready(function($){
         var i = setInterval(function(){
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url : "<?php echo SITE_URL_SSL;?>occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
                     $('#modal-occupi_test-result').html(response);
                 }
             });
-        },1000)
+        },1000);
 
 
-    });
+   // });
 </script>
 
 
