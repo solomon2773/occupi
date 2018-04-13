@@ -190,7 +190,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
     die();
     }
-    public function getRealTimeDataDoorCountAction(){
+    public function getRealTimeDataDoorAction(){
 
 
         $sql = "SELECT * FROM sensors ORDER BY `sensors`.`id` DESC LIMIT 1";
@@ -312,6 +312,32 @@ class ShowcurrentoccupancyController extends AbstractActionController
         </div>';
 
 
+
+
+        die();
+    }
+
+    public function getRealTimeDataDoorCountAction(){
+
+
+        $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '2018-02-24 10:00:02'";
+        $result_cnt = $conn->query($sql_ctn);
+        if ($result_cnt->num_rows > 0) {
+            while($row_cnt = $result_cnt->fetch_assoc()) {
+                $rows_cnt[]=$row_cnt;
+            }
+            //  $rows = $result->fetch_assoc();
+            // print_r($row);
+        } else {
+
+        }
+
+        // print_r($rows);
+
+
+        echo '<div style="font-size: 25px;">';
+        print_r($rows_cnt['0']['occupancy_counter']);
+        echo '</div>';
 
 
         die();
