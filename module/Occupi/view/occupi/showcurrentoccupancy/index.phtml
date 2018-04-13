@@ -16,7 +16,7 @@ $this->pageBreadcrumbs()->setItems([
 
 <script>
 
-    jQuery(document).ready(function($){
+   // jQuery(document).ready(function($){
 
 
         var i = setInterval(function(){
@@ -29,7 +29,7 @@ $this->pageBreadcrumbs()->setItems([
                 }
             });
         },300);
-       var i = setInterval(function(){
+       var ii = setInterval(function(){
            $.ajax({
                type: "GET",
                url : "<?php echo SITE_URL_SSL;?>occupi/showcurrentoccupancy/getRealTimeData",
@@ -41,7 +41,7 @@ $this->pageBreadcrumbs()->setItems([
        },500);
 
 
-    });
+    //});
 </script>
 
 
