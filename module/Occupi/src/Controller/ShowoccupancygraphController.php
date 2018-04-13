@@ -63,9 +63,12 @@ class ShowoccupancygraphController extends AbstractActionController
         } else {
 
         }
+        foreach ($rows_cnt as $row){
+            $result[] = $row['occupancy_counter'];
+        }
 
         // print_r($rows);
-        echo json_encode($rows_cnt);
+        echo json_encode($result);
 
 
 
