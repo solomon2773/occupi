@@ -26,13 +26,16 @@ $this->pageBreadcrumbs()->setItems([
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
                     $('#occupi_test').html(response);
-                    for (var i = 0; i < response.length; i++) {
+                   // for (var i = 0; i < response.length; i++) {
                         // response[i] can be used to get each value
+                      //  var sensor_data = JSON.parse(response[i]['sensor_data']);
 
-                    }
+                   // }
+                    var sensor_data = JSON.parse(response[i]['sensor_data']);
+                    $('#sensor_data').html(sensor_data);
                 }
             });
-        },300);
+        },500);
 
 
 
@@ -41,6 +44,7 @@ $this->pageBreadcrumbs()->setItems([
 
 
 <div id="occupi_test"></div>
+<div id="sensor_data"></div>
 <?php
     function heatmapcolorcssconverter($temp){
     $temp_buf = (int)number_format($temp,2);
