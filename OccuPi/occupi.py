@@ -46,7 +46,7 @@ while True:
     url = 'http://45.35.53.205/pi_post.php'
     data = urllib.urlencode(query_args)
     request = urllib2.Request(url, data)
-    response = urllib2.urlopen(request).read()
-    print response
+   # response = urllib2.urlopen(request).read()
+   # print response
     time.sleep(.1) #delay for one second
 

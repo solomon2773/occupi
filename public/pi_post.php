@@ -66,7 +66,8 @@ try {
         $result_encode =  json_encode($return_result);
        // print_r($result_encode);
     //print_r($return_result);
-        echo $result_encode;
+       // echo $result_encode;
+
 }
 catch(PDOException $e)
 {
