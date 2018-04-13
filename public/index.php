@@ -38,7 +38,7 @@ if (! class_exists(Application::class)) {
 
 
 // Retrieve configuration
-
+date_default_timezone_set("America/Chicago");
 //$appConfig = ArrayUtils::merge($appConfig, require __DIR__ . '/../config/development.config.php');
 $development_allowed_ips = array('47.184.19.124','198.154.108.246','45.35.53.196','47.184.9.118');
 $client_ip = $_SERVER['REMOTE_ADDR'];
