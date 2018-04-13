@@ -29,16 +29,7 @@ $this->pageBreadcrumbs()->setItems([
                 }
             });
         },300);
-       var ii = setInterval(function(){
-           $.ajax({
-               type: "GET",
-               url : "<?php echo SITE_URL_SSL;?>occupi/showcurrentoccupancy/getRealTimeData",
-               //data : $("#mvl_main_new_user_login_form_data").serialize(),
-               success: function(response){
-                   $('#occupi_test').html(response);
-               }
-           });
-       },500);
+
 
 
     //});
