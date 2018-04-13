@@ -25,19 +25,16 @@ $this->pageBreadcrumbs()->setItems([
                 url : "http://occupi.yottatrend.com/occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
-                    $('#occupi_test').html(response);
+                    $('#occupi_data_block').html(response);
                    // for (var i = 0; i < response.length; i++) {
                         // response[i] can be used to get each value
                       //  var sensor_data = JSON.parse(response[i]['sensor_data']);
 
                    // }
-                    var sensor_data = response[0]['jsondata'];
-                    $('#sensor_data').html(sensor_data);
-                    var sensor_id = response[0];
-                    $('#sensor_id').html(sensor_data);
+
                 }
             });
-        },1000);
+        },350);
 
 
 
@@ -45,9 +42,7 @@ $this->pageBreadcrumbs()->setItems([
 </script>
 
 
-<div id="occupi_test"></div>
-<div id="sensor_data"></div>
-<div id="sensor_id"></div>
+<div id="occupi_data_block"></div>
 
 
 
