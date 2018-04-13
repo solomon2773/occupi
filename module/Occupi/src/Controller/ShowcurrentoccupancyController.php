@@ -66,7 +66,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
                     $rows_cnt[]=$row_cnt;
                 }
                 //  $rows = $result->fetch_assoc();
-                 print_r($row);
+                // print_r($row);
             } else {
 
             }
@@ -77,6 +77,8 @@ class ShowcurrentoccupancyController extends AbstractActionController
         {
             echo "DB Connection failed: " . $e->getMessage();
         }
+
+        print_r($rows);
         die();
     }
 
