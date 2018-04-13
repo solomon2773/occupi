@@ -193,7 +193,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
     public function getRealTimeDataDoorAction(){
 
 
-        $sql = "SELECT * FROM sensors ORDER BY `sensors`.`id` DESC LIMIT 1";
+        $sql = "SELECT * FROM sensors ORDER BY `sensors`.`id` ASC LIMIT 1";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
@@ -210,7 +210,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
 
         ///heat map occupi
-        $row = $rows['1'];
+        $row = $rows['0'];
 
         $jsondata = json_decode($row['jsondata']);
         //print_r($row);
