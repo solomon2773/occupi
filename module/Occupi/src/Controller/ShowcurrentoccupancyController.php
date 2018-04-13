@@ -198,8 +198,8 @@ class ShowcurrentoccupancyController extends AbstractActionController
         if ($temp_hsl <= 0){
             $temp_hsl = '0';
         }
-        echo 'background-color: hsl('.$temp_hsl.', 50%, 50%);';
-        return;
+      //  echo 'background-color: hsl('.$temp_hsl.', 50%, 50%);';
+        return 'background-color: hsl('.$temp_hsl.', 50%, 50%);';
     }
 
 

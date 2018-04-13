@@ -56,11 +56,11 @@ class NavManager
             'link'  => $url('occupi')
         ];*/
        // if ($this->rbacManager->isGranted(null, 'profile.own.view')) {
-            $OccupiDropdownItems[] = [
+          /*  $OccupiDropdownItems[] = [
                 'id' => 'occupi',
                 'label' => 'Real-Time Data',
                 'link' => $url('occupi')
-            ];
+            ];*/
             $OccupiDropdownItems[] = [
                 'id' => 'showcurrentoccupancy',
                 'label' => 'Show Currenct Occupancy',
