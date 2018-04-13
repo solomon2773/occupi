@@ -85,8 +85,8 @@ while True:
     data = urllib.urlencode(query_args)
     request = urllib2.Request(url, data)
     response = urllib2.urlopen(request).read()
-    if occupancy_counter != 0:
-	print response
-        print occupancy_counter
+    #if occupancy_counter != 0:
+	#print response
+     #   print occupancy_counter
 
     time.sleep(.1) #delay for one second
