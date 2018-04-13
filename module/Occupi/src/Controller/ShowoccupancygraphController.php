@@ -33,7 +33,7 @@ class ShowoccupancygraphController extends AbstractActionController
     }
 
     public function getOccupancyDataAction(){
-        echo [[1, 3, 2, 4, 6, 9]];
+        echo '[[1, 3, 2, 4, 6, 9]]';
     }
 
 
