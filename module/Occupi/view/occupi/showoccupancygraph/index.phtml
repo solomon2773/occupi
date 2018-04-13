@@ -19,22 +19,51 @@ $this->pageBreadcrumbs()->setItems([
 
 <script>
     $(document).ready(function(){
-        // Our data renderer function, returns an array of the form:
-        // [[[x1, sin(x1)], [x2, sin(x2)], ...]]
-        var sineRenderer = function() {
-            var data = [[]];
-            for (var i=0; i<13; i+=0.5) {
-                data[0].push([i, Math.sin(i)]);
-            }
-            return data;
-        };
 
-        // we have an empty data array here, but use the "dataRenderer"
-        // option to tell the plot to get data from our renderer.
-        var plot1 = $.jqplot('chart1',[],{
-            title: 'Sine Data Renderer',
-            dataRenderer: sineRenderer
+        $.ajax({
+            type: "GET",
+            url : "http://occupi.yottatrend.com/occupi/showoccupancygraph/getOccupancyData",
+            //data : $("#mvl_main_new_user_login_form_data").serialize(),
+            success: function(response){
+                //$('#occupi_data_block_checkin_list').html(response);
+
+                // Our ajax data renderer which here retrieves a text file.
+                // it could contact any source and pull data, however.
+                // The options argument isn't used in this renderer.
+                var ajaxDataRenderer = function(url, plot, options) {
+                    var ret = null;
+                    $.ajax({
+                        // have to use synchronous here, else the function
+                        // will return before the data is fetched
+                        async: false,
+                        url: url,
+                        dataType:"json",
+                        success: function(data) {
+                            ret = data;
+                        }
+                    });
+                    return ret;
+                };
+
+                // The url for our json data
+                var jsonurl = response;
+
+                // passing in the url string as the jqPlot data argument is a handy
+                // shortcut for our renderer.  You could also have used the
+                // "dataRendererOptions" option to pass in the url.
+                var plot2 = $.jqplot('chart1', jsonurl,{
+                    title: "Occupancy Graph",
+                    dataRenderer: ajaxDataRenderer,
+                    dataRendererOptions: {
+                        unusedOptionalUrl: jsonurl
+                    }
+                });
+
+            }
         });
+
+
+
     });
 
 </script>

@@ -106,7 +106,7 @@ return [
             ],
             Controller\ShowoccupancygraphController::class => [
                 // Allow authorized users to visit "settings" action
-                ['actions' => ['index'], 'allow' => '@']
+                ['actions' => ['index','getOccupancyData'], 'allow' => '@']
             ],
 
         ]
