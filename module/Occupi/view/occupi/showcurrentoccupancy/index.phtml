@@ -31,11 +31,11 @@ $this->pageBreadcrumbs()->setItems([
                       //  var sensor_data = JSON.parse(response[i]['sensor_data']);
 
                    // }
-                    var sensor_data = response[0]['sensor_data'];
+                    var sensor_data = response[0]["sensor_data"];
                     $('#sensor_data').html(sensor_data);
                 }
             });
-        },500);
+        },1000);
 
 
 
