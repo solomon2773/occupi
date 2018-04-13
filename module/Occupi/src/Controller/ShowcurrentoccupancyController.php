@@ -67,7 +67,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
     public function getRealTimeDataAction(){
 
 
-        $sql = "SELECT * FROM sensors  LIMIT 1";
+        $sql = "SELECT * FROM sensors ";
         $result = $this->conn->query($sql);
 
         if ($result->num_rows > 0) {
