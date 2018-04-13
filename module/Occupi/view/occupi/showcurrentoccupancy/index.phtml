@@ -22,7 +22,7 @@ $this->pageBreadcrumbs()->setItems([
         var i = setInterval(function(){
             $.ajax({
                 type: "GET",
-                url : "http://45.35.53.205/occupi/showcurrentoccupancy/getRealTimeData",
+                url : "http://occupi.yottatrend.com/occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
                     $('#occupi_test').html(response);
