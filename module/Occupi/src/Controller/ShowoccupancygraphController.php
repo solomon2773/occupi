@@ -52,7 +52,7 @@ class ShowoccupancygraphController extends AbstractActionController
     }
 
     public function getOccupancyDataAction(){
-        $sel_range = $_POST['sel_range'];
+        $sel_range = $_GET['sel_range'];
 
         if ($sel_range == 'by_min'){
             $yday = date('Y-m-d h:i:s', strtotime("-3 hours"));
