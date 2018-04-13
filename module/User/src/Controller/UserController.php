@@ -475,7 +475,13 @@ class UserController extends AbstractActionController
 
                 $user = $this->userManager->addUser($_POST);
             if ($user){
-                echo 'Add user complete!';
+                $result['error']='0';
+                $result['uid']='0';
+                $result['user']='0';
+                $result['full_name']='0';
+                $result['email']='0';
+                $result['created_at']='0';
+
             }
 
         die();
