@@ -39,7 +39,7 @@ $this->pageBreadcrumbs()->setItems([
        // alert(response);
         // The url for our json data
             var sel_range_buf = $('#sel_range').val();
-        var jsonurl = 'http://occupi.yottatrend.com/occupi/showoccupancygraph/getOccupancyData?sel_range='.sel_range_buf;
+        var jsonurl = 'http://occupi.yottatrend.com/occupi/showoccupancygraph/getOccupancyData?sel_range='+sel_range_buf;
 
         // passing in the url string as the jqPlot data argument is a handy
         // shortcut for our renderer.  You could also have used the
