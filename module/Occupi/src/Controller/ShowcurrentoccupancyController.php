@@ -80,7 +80,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
         }
 
-        print_r($rows);
+       // print_r($rows);
 
     
 
