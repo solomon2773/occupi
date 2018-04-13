@@ -31,8 +31,10 @@ $this->pageBreadcrumbs()->setItems([
                       //  var sensor_data = JSON.parse(response[i]['sensor_data']);
 
                    // }
-                    var sensor_data = response[0]["jsondata"];
+                    var sensor_data = response[0]['jsondata'];
                     $('#sensor_data').html(sensor_data);
+                    var sensor_id = response[0];
+                    $('#sensor_id').html(sensor_data);
                 }
             });
         },1000);
@@ -45,6 +47,7 @@ $this->pageBreadcrumbs()->setItems([
 
 <div id="occupi_test"></div>
 <div id="sensor_data"></div>
+<div id="sensor_id"></div>
 <?php
     function heatmapcolorcssconverter($temp){
     $temp_buf = (int)number_format($temp,2);
