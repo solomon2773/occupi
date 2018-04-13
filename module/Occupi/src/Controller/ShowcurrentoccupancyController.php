@@ -336,7 +336,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
 
         echo '<div style="font-size: 25px;">';
-        print_r($rows_cnt['0']['occupancy_counter']);
+        echo '<label style="    font-size: 70px;">'.$rows_cnt['0']['occupancy_counter'].'</label>';
         echo '</div>';
 
 
