@@ -331,7 +331,7 @@ class AuthController extends AbstractActionController
     {        
         $this->authManager->logout();
         
-        return $this->redirect()->toRoute('login', ['action'=>'sociallogin']);
+        return $this->redirect()->toRoute('login');
     }
     
     /**
