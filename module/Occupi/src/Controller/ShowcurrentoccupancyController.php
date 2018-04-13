@@ -210,7 +210,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
 
         ///heat map occupi
-        $row = $rows['0'];
+        $row = $rows['1'];
 
         $jsondata = json_decode($row['jsondata']);
         //print_r($row);
