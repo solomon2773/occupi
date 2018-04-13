@@ -22,17 +22,17 @@ return [
                     ],
                 ],
             ],
-            'regnewuser' => [
+            'createuser' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/regnewuser/',
+                    'route'    => '/createuser/',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
 
                     ],
                     'defaults' => [
-                        'controller' => Controller\AuthController::class,
-                        'action'     => 'regnewuser',
+                        'controller' => Controller\UserController::class,
+                        'action'     => 'createuser',
                     ],
                 ],
             ],
