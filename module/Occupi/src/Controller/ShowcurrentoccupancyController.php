@@ -185,7 +185,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
             </div>
         </div>';
         
-    }
+
 
 
     die();
