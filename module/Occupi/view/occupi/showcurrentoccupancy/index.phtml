@@ -22,10 +22,14 @@ $this->pageBreadcrumbs()->setItems([
         var i = setInterval(function(){
             $.ajax({
                 type: "GET",
-                url : "<?php echo SITE_URL_SSL;?>occupi/showcurrentoccupancy/getRealTimeData",
+                url : "http://45.35.53.205/occupi/showcurrentoccupancy/getRealTimeData",
                 //data : $("#mvl_main_new_user_login_form_data").serialize(),
                 success: function(response){
                     $('#occupi_test').html(response);
+                    for (var i = 0; i < response.length; i++) {
+                        // response[i] can be used to get each value
+
+                    }
                 }
             });
         },300);
