@@ -114,7 +114,9 @@ class User
     {
         $this->email = $email;
     }
-    
+    public function setuser_checkin_time($user_checkin_time){
+        $this->user_checkin_time = $user_checkin_time;
+    }
     /**
      * Returns full name.
      * @return string     
