@@ -320,7 +320,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
     public function getRealTimeDataDoorCountAction(){
 
 
-        $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:a7:c9:95' AND `timestamp` > '2018-02-24 10:00:02'";
+        $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '2018-02-24 10:00:02'";
         $result_cnt = $this->conn->query($sql_ctn);
         if ($result_cnt->num_rows > 0) {
             while($row_cnt = $result_cnt->fetch_assoc()) {

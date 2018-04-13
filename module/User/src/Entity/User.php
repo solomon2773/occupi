@@ -26,9 +26,14 @@ class User
      * @ORM\Column(name="email")  
      */
     protected $email;
-    
-    /** 
-     * @ORM\Column(name="full_name")  
+
+    /**
+     * @ORM\Column(name="user_checkin_time")
+     */
+
+    protected $user_checkin_time;
+    /**
+     * @ORM\Column(name="full_name")
      */
     protected $fullName;
 
