@@ -48,5 +48,5 @@ while True:
     request = urllib2.Request(url, data)
     response = urllib2.urlopen(request).read()
     print response
-    time.sleep(.8) #delay for one second
+    time.sleep(.1) #delay for one second
 
