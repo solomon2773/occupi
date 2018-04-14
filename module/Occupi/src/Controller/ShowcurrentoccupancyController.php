@@ -367,7 +367,7 @@ class ShowcurrentoccupancyController extends AbstractActionController
 
     private function heatmapcolorcssconverter($temp){
         $temp_buf = (int)number_format($temp,2);
-        $temp_hsl = 200-(($temp_buf*5)+5);
+        $temp_hsl = 200-(($temp_buf*10)+5);
         if ($temp_hsl <= 0){
             $temp_hsl = '0';
         }
