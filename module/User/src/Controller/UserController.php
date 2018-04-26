@@ -29,7 +29,9 @@ class UserController extends AbstractActionController
      * @var User\Service\UserManager 
      */
     private $userManager;
-    
+    private $conn;
+
+
     /**
      * Constructor. 
      */
@@ -37,6 +39,40 @@ class UserController extends AbstractActionController
     {
         $this->entityManager = $entityManager;
         $this->userManager = $userManager;
+
+
+        $servername = "localhost";
+        $username = "occupi";
+        $password = "OccuPi@2018";
+        $dbname = "occupi";
+        try {
+
+            $this->conn = new \mysqli($servername, $username, $password, $dbname);
+            // Check connection
+            if ($this->conn->connect_error) {
+                die("Connection failed: " . $this->conn->connect_error);
+            }
+
+
+            /*
+            $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '2018-02-24 10:00:02'";
+            $result_cnt = $conn->query($sql_ctn);
+            if ($result_cnt->num_rows > 0) {
+                while($row_cnt = $result_cnt->fetch_assoc()) {
+                    $rows_cnt[]=$row_cnt;
+                }
+                //  $rows = $result->fetch_assoc();
+                // print_r($row);
+            } else {
+
+            }*/
+
+
+        }
+        catch(PDOException $e)
+        {
+            echo "DB Connection failed: " . $e->getMessage();
+        }
     }
     
     /**
@@ -455,6 +491,7 @@ class UserController extends AbstractActionController
             $user = $this->entityManager->getRepository(User::class)->findOneByEmail( ['email'=>$user_email]);
 
             $checkin_user = $user->getUserData();
+
             $yday = date('Y-m-d h:i:s', strtotime("-3 hours"));
             $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '".$yday."'";
             $result_cnt = $this->conn->query($sql_ctn);
