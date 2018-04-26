@@ -504,7 +504,10 @@ class UserController extends AbstractActionController
             } else {
 
             }
-            $checkin_user['current_occupancy'] = '1';//$rows_cnt['0']['occupancy_counter'];
+            if ($rows_cnt['0']['occupancy_counter']){
+                $checkin_user['current_occupancy'] = $rows_cnt['0']['occupancy_counter'];
+            }
+
            // if (!empty($checkin_user)){
                 $mysqltime = date ("Y-m-d H:i:s", time());
                 $user->setuser_checkin_time($mysqltime);

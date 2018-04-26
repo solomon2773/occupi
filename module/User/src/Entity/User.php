@@ -290,7 +290,7 @@ class User
 
 
 
-        $userdata['current_occupancy'] = '';
+        $userdata['current_occupancy'] = '0';
         $userdata['user_id'] = $this->getId();
         $userdata['user_email'] = $this->getEmail();
         $userdata['user_fullname'] = $this->getFullName();
