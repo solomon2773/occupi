@@ -455,6 +455,19 @@ class UserController extends AbstractActionController
             $user = $this->entityManager->getRepository(User::class)->findOneByEmail( ['email'=>$user_email]);
 
             $checkin_user = $user->getUserData();
+            $yday = date('Y-m-d h:i:s', strtotime("-3 hours"));
+            $sql_ctn = "SELECT sum(`occupancy_counter`) as `occupancy_counter` FROM `sensors_history` WHERE `mac_address` = 'b8:27:eb:92:3a:ac' AND `timestamp` > '".$yday."'";
+            $result_cnt = $this->conn->query($sql_ctn);
+            if ($result_cnt->num_rows > 0) {
+                while($row_cnt = $result_cnt->fetch_assoc()) {
+                    $rows_cnt[]=$row_cnt;
+                }
+                //  $rows = $result->fetch_assoc();
+                // print_r($row);
+            } else {
+
+            }
+            $checkin_user['current_occupancy'] = $rows_cnt['0']['occupancy_counter'];
            // if (!empty($checkin_user)){
                 $mysqltime = date ("Y-m-d H:i:s", time());
                 $user->setuser_checkin_time($mysqltime);

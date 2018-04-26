@@ -287,6 +287,10 @@ class User
     }
 
     public function getUserData(){
+
+
+
+        $userdata['current_occupancy'] = '';
         $userdata['user_id'] = $this->getId();
         $userdata['user_email'] = $this->getEmail();
         $userdata['user_fullname'] = $this->getFullName();
